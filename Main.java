@@ -164,9 +164,9 @@ class Main {
         System.out.println ("\n||| TRABALHO 02 |||");
         System.out.println ("\n||| by Rafael Neuwirth");
         
-        limpar(3);
+        limpar(5);
         
-        System.out.println ("\n[?] Quantas palavras deseja inserir?");
+        System.out.println ("[?] Quantas palavras deseja inserir?");
         arraysize = sc.nextInt();
         
         palavras = new String[arraysize];
@@ -176,10 +176,12 @@ class Main {
             
             limpar(30);
             
-            System.out.println ("\n[ PALAVRA " + (i+1) + " ] Insira alguma Palavra\n");
+            System.out.println ("[ PALAVRA " + (i+1) + " ] Insira alguma Palavra");
+            
+            limpar(2);
             
             // Por segurança, o Limite de Tamanho da Palavra é de 12 Caracteres
-            if (i == 0) {System.out.println ("\n[!] Limite de Tamanho: 12 Caracteres\n");}
+            if (i == 0) {System.out.println ("[!] Limite de Tamanho: 12 Caracteres\n");}
             palavras[i] = sc.next();
             
             // Define a Palavra para Caixa-Alta
@@ -203,7 +205,7 @@ class Main {
             
             limpar(30);
             
-            System.out.println ("\n[DEFINIR LINHAS] Insira o Tamanho [MINIMO: " + (tamanhoMinimo) + "]\n");
+            System.out.println ("[DEFINIR LINHAS] Insira o Tamanho [MINIMO: " + (tamanhoMinimo) + "]\n");
             linhas = sc.nextInt();
             
             if (linhas >= (tamanhoMinimo)) {break;}
@@ -215,7 +217,7 @@ class Main {
             
             limpar(30);
             
-            System.out.println ("\n[DEFINIR COLUNAS] Insira o Tamanho [MINIMO: " + (tamanhoMinimo) + "]\n");
+            System.out.println ("[DEFINIR COLUNAS] Insira o Tamanho [MINIMO: " + (tamanhoMinimo) + "]\n");
             colunas = sc.nextInt();
             
             if (colunas >= (tamanhoMinimo)) {break;}
