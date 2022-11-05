@@ -1,6 +1,3 @@
-// aluno: Rafael Neuwirth Swierczynski
-// Trabalho 02 - Carrard (Programação I)
-
 package main;
 
 import java.util.Scanner;
@@ -258,24 +255,24 @@ class Main {
         
         // Preenche cada char individualmente da "MatrizRevelada"
         for (int i=0; i<linhas; i++) {
-                
-                for (int j=0; j<colunas; j++) {
-                    
-                    matrizRevelada[i][j] = matriz[i][j];
-                }
-            }
             
-            String alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            
-            // Preenche a Matriz com alguma Letra Aleatoria da String do Alfabeto
-            for (int i=0; i<linhas; i++) {
+            for (int j=0; j<colunas; j++) {
                 
-                for (int j=0; j<colunas; j++) {
-                    
-                    if (matriz[i][j] == '.')
-                    { matriz[i][j] = CharAleatorio(alfabeto); }
-                }
+                matrizRevelada[i][j] = matriz[i][j];
             }
+        }
+        
+        String alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        
+        // Preenche a Matriz com alguma Letra Aleatoria da String do Alfabeto
+        for (int i=0; i<linhas; i++) {
+            
+            for (int j=0; j<colunas; j++) {
+                
+                if (matriz[i][j] == '.')
+                { matriz[i][j] = CharAleatorio(alfabeto); }
+            }
+        }
         
         
         limpar(15);
@@ -289,9 +286,7 @@ class Main {
         palavras[0] = sc.next();
         
         limpar(12);
-        
         ExibirMatriz (linhas, colunas, matrizRevelada);
-        
         limpar(2);
         
     }
