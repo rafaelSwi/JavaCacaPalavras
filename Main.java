@@ -1,7 +1,8 @@
 package main;
 
-import java.util.Scanner;
-import java.util.Random;
+import java.util.*;
+import java.lang.*;
+import java.io.*;
 
 class Main {
     
@@ -52,6 +53,23 @@ class Main {
         
     }
     
+    // Apenas retorna "true" ou "false" aleatoriamente
+    static boolean bool() {
+        Random random = new Random();
+        return random.nextBoolean();
+    }
+    
+    // Inverte uma String
+    static String Inverter (String normal) {
+        
+        String invertido = "";
+        
+        for (int i = normal.length() - 1;  0 <= i; i--)
+        { invertido += normal.charAt(i); }
+        return invertido;
+        
+    }
+    
     // Com base na Ordem, gera uma Posição que encaixe a Palavra no Caça-Palavras
     static int GerarPosicao (int linhas, int colunas, int tamanhoPalavra, int ordem) {
         
@@ -63,13 +81,13 @@ class Main {
             case 1: // HORIZONTAL
                 while (true)
                 {
-                    posicao = (int)(Math.random() * (linhas - 1)) + 1;
+                    posicao = (int)(Math.random() * (linhas));
                     if ((posicao + tamanhoPalavra) <= linhas) {break;}
                 }
             case 2: // VERTICAL
                 while (true)
                 {
-                    posicao = (int)(Math.random() * (colunas - 1)) + 1;
+                    posicao = (int)(Math.random() * (colunas));
                     if ((posicao + tamanhoPalavra) <= colunas) {break;}
                 }
             default: // DIAGONAL
@@ -77,7 +95,7 @@ class Main {
                 {
                     // Por questão de Segurança, opta por escolher o Menor entre Linhas e Colunas
                     int storage = 0; if (linhas >= colunas) {storage = colunas;} else {storage = linhas;}
-                    posicao = (int)(Math.random() * ((storage) - 1)) + 1;
+                    posicao = (int)(Math.random() * ((storage)));
                     if ((posicao + tamanhoPalavra) <= linhas) {break;}
                 }
                 
@@ -110,7 +128,7 @@ class Main {
                     if (matriz[ps + i][ps] == '.' || matriz[ps + i][ps] == palavra.charAt(i))
                     { permitidoPreencher = true; } else {permitidoPreencher = false; break; } } }
             
-            // VERIFICAÇÃO DIAGONAL DIREITA-BAIXO
+            // VERIFICAÇÃO DIAGONAL
             if (ordem == 3) {
                 for (int i = 0; i<tamanhoPalavra; i++) {
                     if (matriz[ps + i][ps + i] == '.' || matriz[ps + i][ps + i] == palavra.charAt(i))
@@ -134,7 +152,7 @@ class Main {
                 matriz[ps + i][ps] = palavra.charAt(i);
             } }
         
-        // APLICAÇÃO DIAGONAL DIREITA-BAIXO
+        // APLICAÇÃO DIAGONAL
         if (ordem == 3) {
             for (int i = 0; i<tamanhoPalavra; i++) {
                 matriz[ps + i][ps + i] = palavra.charAt(i);
@@ -178,7 +196,7 @@ class Main {
             
             System.out.println ("[ PALAVRA " + (i+1) + " ] Insira alguma Palavra");
             
-            limpar(2);
+            limpar(1);
             
             // Por segurança, o Limite de Tamanho da Palavra é de 12 Caracteres
             if (i == 0) {System.out.println ("[!] Limite de Tamanho: 12 Caracteres\n");}
@@ -186,6 +204,9 @@ class Main {
             
             // Define a Palavra para Caixa-Alta
             palavras[i] = palavras[i].toUpperCase();
+            
+            // Aleatoriamente define se Inverte a String (TRUE ou FALSE)
+            if (bool() == true) {palavras[i] = Inverter(palavras[i]);}
             
             // Caso a Palavra ultrapasse o Limite Seguro, terá que inserir novamente
             // Usa o Tamanho da Palavra mais longa como base para definir o Tamanho Minimo da Matriz
@@ -195,7 +216,8 @@ class Main {
             
         }
         
-        // Define o Tamanho Minimo: ELE MESMO * 2.5 + (quantidade de palavras) dividido por Três.
+        // Define o Tamanho Minimo
+        // ELE MESMO * 2.5 + (quantidade de palavras) dividido por Três.
         tamanhoMinimo = (tamanhoMinimo * (int)2.5 + (int)(arraysize / 3));
         
         int linhas, colunas;
